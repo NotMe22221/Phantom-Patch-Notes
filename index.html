@@ -17,6 +17,44 @@
             color: #e0e0e0;
             min-height: 100vh;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating particles background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 107, 107, 0.3);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
         }
 
         .intro-screen {
@@ -82,8 +120,12 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 2rem;
-            opacity: 0;
-            animation: fadeIn 1s ease-in 0.5s forwards;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container.hidden {
+            display: none;
         }
 
         header {
@@ -114,6 +156,12 @@
             margin-bottom: 2rem;
             border: 1px solid rgba(255, 107, 107, 0.2);
             backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .demo-section:hover {
+            border-color: rgba(255, 107, 107, 0.4);
+            box-shadow: 0 5px 30px rgba(255, 107, 107, 0.2);
         }
 
         .section-title {
@@ -136,6 +184,12 @@
             border-radius: 10px;
             border-left: 4px solid #ff6b6b;
             transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .commit-item.visible {
+            animation: slideInLeft 0.5s ease-out forwards;
         }
 
         .commit-item:hover {
@@ -153,11 +207,6 @@
         .commit-hash {
             font-family: 'Courier New', monospace;
             color: #888;
-            font-size: 0.9rem;
-        }
-
-        .commit-author {
-            color: #b8b8b8;
             font-size: 0.9rem;
         }
 
@@ -204,6 +253,12 @@
             border-radius: 10px;
             text-align: center;
             border: 1px solid rgba(255, 107, 107, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
         }
 
         .stat-value {
@@ -230,6 +285,12 @@
             justify-content: space-between;
             padding: 0.5rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .shortcut:hover {
+            background: rgba(255, 107, 107, 0.1);
+            padding-left: 1rem;
         }
 
         .shortcut:last-child {
@@ -242,8 +303,146 @@
             border-radius: 5px;
             font-family: 'Courier New', monospace;
             color: #ff6b6b;
+            font-weight: bold;
         }
 
+        /* Help Overlay */
+        .help-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        .help-overlay.visible {
+            display: flex;
+        }
+
+        .help-content {
+            background: linear-gradient(135deg, #1a0a2e 0%, #0f0519 100%);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 107, 107, 0.5);
+            max-width: 600px;
+            box-shadow: 0 20px 60px rgba(255, 107, 107, 0.3);
+        }
+
+        .help-title {
+            font-size: 2rem;
+            color: #ff6b6b;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .help-shortcuts {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .help-shortcut {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .help-key {
+            background: rgba(255, 107, 107, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            color: #ff6b6b;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Presentation Mode */
+        .presentation-mode {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #1a0a2e 0%, #0f0519 100%);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1500;
+            padding: 3rem;
+        }
+
+        .presentation-mode.active {
+            display: flex;
+        }
+
+        .presentation-title {
+            font-size: 4rem;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a6f, #c44569);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .presentation-content {
+            font-size: 2rem;
+            color: #e0e0e0;
+            text-align: center;
+            max-width: 1200px;
+            line-height: 1.6;
+        }
+
+        .presentation-example {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border-left: 5px solid #ff6b6b;
+        }
+
+        .presentation-original {
+            color: #b8b8b8;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .presentation-themed {
+            color: #ff6b6b;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        /* Notification Toast */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(255, 107, 107, 0.9);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.5);
+            z-index: 3000;
+            display: none;
+            animation: slideInRight 0.3s ease-out;
+        }
+
+        .toast.visible {
+            display: block;
+        }
+
+        /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -262,6 +461,28 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
             }
         }
 
@@ -295,19 +516,81 @@
             h1 {
                 font-size: 2rem;
             }
+
+            .presentation-title {
+                font-size: 2.5rem;
+            }
+
+            .presentation-content {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
 <body>
+
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Help Overlay -->
+    <div class="help-overlay" id="helpOverlay">
+        <div class="help-content">
+            <h2 class="help-title">⌨️ Keyboard Shortcuts</h2>
+            <div class="help-shortcuts">
+                <div class="help-shortcut">
+                    <span>Toggle Presentation Mode</span>
+                    <span class="help-key">F</span>
+                </div>
+                <div class="help-shortcut">
+                    <span>Next Example</span>
+                    <span class="help-key">→</span>
+                </div>
+                <div class="help-shortcut">
+                    <span>Previous Example</span>
+                    <span class="help-key">←</span>
+                </div>
+                <div class="help-shortcut">
+                    <span>Reset Demo</span>
+                    <span class="help-key">R</span>
+                </div>
+                <div class="help-shortcut">
+                    <span>Show/Hide Help</span>
+                    <span class="help-key">?</span>
+                </div>
+                <div class="help-shortcut">
+                    <span>Close Help</span>
+                    <span class="help-key">ESC</span>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 2rem; color: #b8b8b8;">Press ESC or ? to close</p>
+        </div>
+    </div>
+
+    <!-- Presentation Mode -->
+    <div class="presentation-mode" id="presentationMode">
+        <h1 class="presentation-title">👻 Phantom Patch Notes</h1>
+        <div class="presentation-content">
+            <div class="presentation-example" id="presentationExample">
+                <div class="presentation-original">Original: <span id="presOriginal"></span></div>
+                <div class="presentation-themed">Horror: <span id="presThemed"></span></div>
+            </div>
+            <p style="color: #b8b8b8; margin-top: 2rem;">Use ← → to navigate | Press F to exit</p>
+        </div>
+    </div>
+
     <!-- Intro Screen -->
     <div class="intro-screen" id="introScreen">
         <div class="logo">👻 Phantom Patch Notes</div>
         <div class="tagline">Transform Git History into Horror Stories</div>
         <button class="begin-btn" onclick="beginDemo()">Begin Demo 🎃</button>
+        <p style="color: #888; margin-top: 2rem;">Press Enter to start | Press ? for help</p>
     </div>
 
     <!-- Main Demo Content -->
-    <div class="container" id="mainContent" style="display: none;">
+    <div class="container hidden" id="mainContent">
         <header>
             <h1>👻 Phantom Patch Notes</h1>
             <p class="subtitle">Kiroween Hackathon Demo - Horror-Themed Changelog Generator</p>
@@ -318,19 +601,19 @@
             <h2 class="section-title">📊 Transformation Statistics</h2>
             <div class="stats">
                 <div class="stat-card">
-                    <div class="stat-value" id="commitCount">27</div>
+                    <div class="stat-value" id="commitCount">0</div>
                     <div class="stat-label">Total Commits</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value" id="releaseCount">4</div>
+                    <div class="stat-value" id="releaseCount">0</div>
                     <div class="stat-label">Releases</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value" id="transformedWords">143</div>
+                    <div class="stat-value" id="transformedWords">0</div>
                     <div class="stat-label">Horror Words Applied</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value" id="transformPercent">68%</div>
+                    <div class="stat-value" id="transformPercent">0%</div>
                     <div class="stat-label">Text Transformed</div>
                 </div>
             </div>
@@ -369,7 +652,7 @@
                 </div>
                 <div class="commit-item">
                     <div class="commit-message themed">🦇 Presentation Mode</div>
-                    <p style="color: #b8b8b8; margin-top: 0.5rem;">Full-screen mode with enhanced visibility for demos and presentations</p>
+                    <p style="color: #b8b8b8; margin-top: 0.5rem;">Full-screen mode with enhanced visibility for demos and presentations (Press F)</p>
                 </div>
             </div>
         </div>
@@ -379,19 +662,15 @@
             <h2 class="section-title">⌨️ Keyboard Shortcuts</h2>
             <div class="keyboard-shortcuts">
                 <div class="shortcut">
-                    <span>Toggle Auto-Play</span>
-                    <span class="key">Space</span>
-                </div>
-                <div class="shortcut">
-                    <span>Presentation Mode</span>
+                    <span>Toggle Presentation Mode</span>
                     <span class="key">F</span>
                 </div>
                 <div class="shortcut">
-                    <span>Next Step</span>
+                    <span>Next Example</span>
                     <span class="key">→</span>
                 </div>
                 <div class="shortcut">
-                    <span>Previous Step</span>
+                    <span>Previous Example</span>
                     <span class="key">←</span>
                 </div>
                 <div class="shortcut">
@@ -411,14 +690,14 @@
             <p style="color: #b8b8b8; margin-bottom: 1rem;">Check out the full project on GitHub</p>
             <a href="https://github.com/NotMe22221/Phantom-Patch-Notes" 
                target="_blank" 
-               style="display: inline-block; padding: 1rem 2rem; background: linear-gradient(45deg, #ff6b6b, #ee5a6f); color: white; text-decoration: none; border-radius: 50px; transition: all 0.3s ease;">
+               style="display: inline-block; padding: 1rem 2rem; background: linear-gradient(45deg, #ff6b6b, #ee5a6f); color: white; text-decoration: none; border-radius: 50px; transition: all 0.3s ease; box-shadow: 0 5px 20px rgba(255, 107, 107, 0.3);">
                 View on GitHub 🎃
             </a>
         </div>
     </div>
 
     <script>
-        // Haunted repository data
+        // Haunted repository data with more examples
         const hauntedData = {
             commits: [
                 { original: "Add user authentication system", themed: "Summoned spectral guardians from the void" },
@@ -430,10 +709,42 @@
                 { original: "Fix race condition in message queue", themed: "Sealed the temporal rift in the shadow realm" },
                 { original: "Add WebSocket connection pooling", themed: "Opened portals to the netherworld" },
                 { original: "Improve notification delivery speed", themed: "Hastened the arrival of dark omens" },
-                { original: "Breaking: Change notification API structure", themed: "BREAKING: Shattered the ancient covenant" }
+                { original: "Breaking: Change notification API structure", themed: "BREAKING: Shattered the ancient covenant" },
+                { original: "Add dark mode theme engine", themed: "Embraced the eternal darkness within" },
+                { original: "Fix theme switching animation glitch", themed: "Exorcised the glitching specter" },
+                { original: "Add custom theme creator", themed: "Forged cursed artifacts of customization" },
+                { original: "Improve theme rendering performance", themed: "Unleashed unholy rendering speed" },
+                { original: "Add database query optimization", themed: "Summoned ancient database demons" }
             ]
         };
 
+        let currentExampleIndex = 0;
+        let isPresentationMode = false;
+
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Show toast notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('visible');
+            setTimeout(() => {
+                toast.classList.remove('visible');
+            }, 2000);
+        }
+
+        // Begin demo
         function beginDemo() {
             const introScreen = document.getElementById('introScreen');
             const mainContent = document.getElementById('mainContent');
@@ -441,23 +752,26 @@
             introScreen.classList.add('hidden');
             setTimeout(() => {
                 introScreen.style.display = 'none';
-                mainContent.style.display = 'block';
+                mainContent.classList.remove('hidden');
                 loadCommits();
                 animateStats();
+                showToast('🎃 Demo Started! Press ? for help');
             }, 500);
         }
 
+        // Load commits with animation
         function loadCommits() {
             const originalContainer = document.getElementById('originalCommits');
             const themedContainer = document.getElementById('themedCommits');
+            
+            originalContainer.innerHTML = '';
+            themedContainer.innerHTML = '';
             
             hauntedData.commits.forEach((commit, index) => {
                 setTimeout(() => {
                     // Original commit
                     const originalDiv = document.createElement('div');
                     originalDiv.className = 'commit-item';
-                    originalDiv.style.opacity = '0';
-                    originalDiv.style.animation = 'slideUp 0.5s ease-out forwards';
                     originalDiv.innerHTML = `
                         <div class="commit-header">
                             <span class="commit-hash">#${(index + 1).toString().padStart(2, '0')}</span>
@@ -465,12 +779,11 @@
                         <div class="commit-message">${commit.original}</div>
                     `;
                     originalContainer.appendChild(originalDiv);
+                    setTimeout(() => originalDiv.classList.add('visible'), 10);
                     
                     // Themed commit
                     const themedDiv = document.createElement('div');
                     themedDiv.className = 'commit-item';
-                    themedDiv.style.opacity = '0';
-                    themedDiv.style.animation = 'slideUp 0.5s ease-out forwards';
                     themedDiv.innerHTML = `
                         <div class="commit-header">
                             <span class="commit-hash">#${(index + 1).toString().padStart(2, '0')}</span>
@@ -478,10 +791,19 @@
                         <div class="commit-message themed">${commit.themed}</div>
                     `;
                     themedContainer.appendChild(themedDiv);
+                    setTimeout(() => themedDiv.classList.add('visible'), 10);
                 }, index * 100);
             });
+
+            // Animate feature items
+            setTimeout(() => {
+                document.querySelectorAll('.demo-section .commit-item').forEach((item, index) => {
+                    setTimeout(() => item.classList.add('visible'), index * 100);
+                });
+            }, hauntedData.commits.length * 100);
         }
 
+        // Animate statistics
         function animateStats() {
             animateValue('commitCount', 0, 27, 2000);
             animateValue('releaseCount', 0, 4, 1500);
@@ -521,11 +843,129 @@
             }, 16);
         }
 
-        // Keyboard shortcuts
+        // Toggle presentation mode
+        function togglePresentationMode() {
+            isPresentationMode = !isPresentationMode;
+            const presentationMode = document.getElementById('presentationMode');
+            const mainContent = document.getElementById('mainContent');
+            
+            if (isPresentationMode) {
+                presentationMode.classList.add('active');
+                mainContent.classList.add('hidden');
+                updatePresentationExample();
+                showToast('🎬 Presentation Mode ON');
+            } else {
+                presentationMode.classList.remove('active');
+                mainContent.classList.remove('hidden');
+                showToast('🎬 Presentation Mode OFF');
+            }
+        }
+
+        // Update presentation example
+        function updatePresentationExample() {
+            const commit = hauntedData.commits[currentExampleIndex];
+            document.getElementById('presOriginal').textContent = commit.original;
+            document.getElementById('presThemed').textContent = commit.themed;
+        }
+
+        // Navigate examples
+        function nextExample() {
+            currentExampleIndex = (currentExampleIndex + 1) % hauntedData.commits.length;
+            if (isPresentationMode) {
+                updatePresentationExample();
+            }
+            showToast(`Example ${currentExampleIndex + 1}/${hauntedData.commits.length}`);
+        }
+
+        function previousExample() {
+            currentExampleIndex = (currentExampleIndex - 1 + hauntedData.commits.length) % hauntedData.commits.length;
+            if (isPresentationMode) {
+                updatePresentationExample();
+            }
+            showToast(`Example ${currentExampleIndex + 1}/${hauntedData.commits.length}`);
+        }
+
+        // Reset demo
+        function resetDemo() {
+            currentExampleIndex = 0;
+            if (isPresentationMode) {
+                togglePresentationMode();
+            }
+            
+            const introScreen = document.getElementById('introScreen');
+            const mainContent = document.getElementById('mainContent');
+            
+            mainContent.classList.add('hidden');
+            introScreen.style.display = 'flex';
+            introScreen.classList.remove('hidden');
+            
+            // Reset stats
+            document.getElementById('commitCount').textContent = '0';
+            document.getElementById('releaseCount').textContent = '0';
+            document.getElementById('transformedWords').textContent = '0';
+            document.getElementById('transformPercent').textContent = '0%';
+            
+            showToast('🔄 Demo Reset');
+        }
+
+        // Toggle help overlay
+        function toggleHelp() {
+            const helpOverlay = document.getElementById('helpOverlay');
+            helpOverlay.classList.toggle('visible');
+        }
+
+        // Keyboard event handler
         document.addEventListener('keydown', (e) => {
+            // Intro screen - Enter to start
             if (e.key === 'Enter' && document.getElementById('introScreen').style.display !== 'none') {
                 beginDemo();
+                return;
             }
+
+            // Help overlay
+            if (e.key === '?' || e.key === '/') {
+                e.preventDefault();
+                toggleHelp();
+                return;
+            }
+
+            if (e.key === 'Escape') {
+                const helpOverlay = document.getElementById('helpOverlay');
+                if (helpOverlay.classList.contains('visible')) {
+                    toggleHelp();
+                }
+                return;
+            }
+
+            // Main demo shortcuts
+            if (document.getElementById('mainContent').classList.contains('hidden') && 
+                document.getElementById('introScreen').style.display === 'none') {
+                return; // Don't process if not in main content
+            }
+
+            switch(e.key.toLowerCase()) {
+                case 'f':
+                    e.preventDefault();
+                    togglePresentationMode();
+                    break;
+                case 'arrowright':
+                    e.preventDefault();
+                    nextExample();
+                    break;
+                case 'arrowleft':
+                    e.preventDefault();
+                    previousExample();
+                    break;
+                case 'r':
+                    e.preventDefault();
+                    resetDemo();
+                    break;
+            }
+        });
+
+        // Initialize on load
+        window.addEventListener('load', () => {
+            createParticles();
         });
     </script>
 </body>
