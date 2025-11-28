@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Styles Test</title>
+  <link rel="stylesheet" href="../../frontend/styles.css">
+  <link rel="stylesheet" href="./demo.css">
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div style="padding: 2rem; background: #0a0a0a;">
+    <h1 style="color: white; margin-bottom: 2rem;">Demo Styles Test</h1>
+    
+    <!-- Test particle effects -->
+    <div style="position: relative; height: 200px; background: #1a1a1a; border-radius: 8px; margin-bottom: 2rem;">
+      <h2 style="color: white; padding: 1rem;">Particle Effects</h2>
+      <div class="particle-container">
+        <div class="particle" style="--tx: 100px; --ty: -100px; left: 50%; top: 50%;"></div>
+        <div class="particle" style="--tx: -100px; --ty: -100px; left: 50%; top: 50%;"></div>
+      </div>
+    </div>
+    
+    <!-- Test glowing effects -->
+    <div style="margin-bottom: 2rem;">
+      <h2 style="color: white; margin-bottom: 1rem;">Glowing Effects</h2>
+      <button class="glow-pulse" style="padding: 1rem 2rem; background: #8a2be2; color: white; border: none; border-radius: 8px; cursor: pointer;">
+        Glowing Button
+      </button>
+    </div>
+    
+    <!-- Test loading animations -->
+    <div style="margin-bottom: 2rem;">
+      <h2 style="color: white; margin-bottom: 1rem;">Loading Animations</h2>
+      <div class="demo-loading-spinner"></div>
+      <p class="demo-loading-text" style="color: white; text-align: center; margin-top: 1rem;">Loading</p>
+    </div>
+    
+    <!-- Test theme showcase -->
+    <div class="theme-showcase" style="display: block;">
+      <div class="theme-showcase-header">
+        <h3 class="theme-showcase-title">Transformation Showcase</h3>
+        <p class="theme-showcase-subtitle">Witness the horror transformation</p>
+      </div>
+      <div class="theme-showcase-content">
+        <div class="theme-showcase-panel">
+          <h4 class="theme-showcase-panel-title">Original</h4>
+          <div class="theme-showcase-entry">
+            Fixed memory leak in authentication module
+          </div>
+        </div>
+        <div class="theme-showcase-panel">
+          <h4 class="theme-showcase-panel-title">Horror Themed</h4>
+          <div class="theme-showcase-entry">
+            <span class="theme-showcase-highlight" data-original="Fixed">Banished</span> the 
+            <span class="theme-showcase-highlight" data-original="memory leak">phantom</span> that 
+            <span class="theme-showcase-highlight" data-original="haunted">haunted</span> our authentication 
+            <span class="theme-showcase-highlight" data-original="module">ritual</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Test statistics display -->
+    <div class="statistics-display" style="display: block;">
+      <div class="statistics-header">
+        <h3 class="statistics-title">Transformation Statistics</h3>
+      </div>
+      <div class="statistics-grid">
+        <div class="statistic-card">
+          <div class="statistic-value">42</div>
+          <div class="statistic-label">Total Commits</div>
+        </div>
+        <div class="statistic-card">
+          <div class="statistic-value">156</div>
+          <div class="statistic-label">Horror Words</div>
+        </div>
+        <div class="statistic-card">
+          <div class="statistic-value">73%</div>
+          <div class="statistic-label">Transformation</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Test transitions -->
+    <div style="margin-top: 2rem;">
+      <h2 style="color: white; margin-bottom: 1rem;">Transition Effects</h2>
+      <div class="fade-in-up" style="background: #1a1a1a; padding: 1rem; border-radius: 8px; color: white;">
+        Fade In Up Animation
+      </div>
+    </div>
+  </div>
+</body>
+</html>

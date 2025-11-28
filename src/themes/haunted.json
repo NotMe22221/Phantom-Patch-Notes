@@ -1,0 +1,139 @@
+{
+  "name": "haunted",
+  "vocabulary": {
+    "verbs": [
+      "summoned",
+      "banished",
+      "cursed",
+      "conjured",
+      "exorcised",
+      "manifested",
+      "vanished",
+      "possessed",
+      "haunted",
+      "enchanted",
+      "awakened",
+      "obliterated",
+      "transformed",
+      "resurrected",
+      "sacrificed",
+      "shattered",
+      "whispered",
+      "invoked",
+      "dispelled",
+      "corrupted"
+    ],
+    "adjectives": [
+      "spectral",
+      "eldritch",
+      "haunted",
+      "ethereal",
+      "cursed",
+      "phantom",
+      "ghostly",
+      "sinister",
+      "ominous",
+      "macabre",
+      "eerie",
+      "uncanny",
+      "shadowy",
+      "cryptic",
+      "forbidden",
+      "arcane",
+      "malevolent",
+      "supernatural",
+      "otherworldly",
+      "unholy"
+    ],
+    "nouns": [
+      "phantom",
+      "specter",
+      "wraith",
+      "spirit",
+      "apparition",
+      "entity",
+      "shade",
+      "ghoul",
+      "revenant",
+      "poltergeist",
+      "demon",
+      "nightmare",
+      "shadow",
+      "curse",
+      "hex",
+      "ritual",
+      "incantation",
+      "void",
+      "abyss",
+      "crypt"
+    ]
+  },
+  "patterns": [
+    {
+      "type": "addition",
+      "templates": [
+        "Summoned {feature} from the void",
+        "Conjured {feature} into existence",
+        "Manifested {feature} from the shadows",
+        "Awakened {feature} from eternal slumber",
+        "Invoked {feature} through dark rituals",
+        "Resurrected {feature} from the depths",
+        "Whispered {feature} into being",
+        "Materialized {feature} from the ether"
+      ]
+    },
+    {
+      "type": "removal",
+      "templates": [
+        "Banished {feature} to the shadow realm",
+        "Exorcised {feature} from the codebase",
+        "Vanished {feature} into the mist",
+        "Sent {feature} to the abyss",
+        "Obliterated {feature} from existence",
+        "Cast {feature} into the void",
+        "Dissolved {feature} into darkness",
+        "Erased {feature} from the mortal plane"
+      ]
+    },
+    {
+      "type": "modification",
+      "templates": [
+        "Transformed {feature} with dark magic",
+        "Cursed {feature} with new powers",
+        "Reshaped {feature} through spectral forces",
+        "Enchanted {feature} with forbidden knowledge",
+        "Corrupted {feature} with eldritch energy",
+        "Possessed {feature} with otherworldly abilities",
+        "Infused {feature} with supernatural essence",
+        "Twisted {feature} through arcane manipulation"
+      ]
+    },
+    {
+      "type": "fix",
+      "templates": [
+        "Exorcised the {bug} haunting {component}",
+        "Banished the curse afflicting {component}",
+        "Purified {component} of its {bug}",
+        "Dispelled the {bug} tormenting {component}",
+        "Cleansed {component} of the {bug} plague",
+        "Lifted the {bug} hex from {component}",
+        "Vanquished the {bug} possessing {component}",
+        "Sealed the {bug} breach in {component}"
+      ]
+    },
+    {
+      "type": "breaking",
+      "templates": [
+        "Shattered {feature} in a ritual of renewal",
+        "Obliterated {feature} to summon something greater",
+        "Sacrificed {feature} for dark purposes",
+        "Destroyed {feature} in a cataclysmic event",
+        "Annihilated {feature} through forbidden magic",
+        "Razed {feature} to rebuild from ashes",
+        "Consumed {feature} in spectral flames",
+        "Unmade {feature} to reshape reality"
+      ]
+    }
+  ],
+  "cssStyles": "body{background:linear-gradient(135deg,#0a0015 0%,#1a0a1a 50%,#0f0520 100%);color:#e0d0e0;font-family:'Crimson Text','Georgia',serif;line-height:1.6}h1,h2,h3{color:#b19cd9;text-shadow:0 0 10px rgba(177,156,217,0.3);font-family:'Cinzel','Georgia',serif;letter-spacing:2px}h1{font-size:2.5em;border-bottom:2px solid #4a1a4a;padding-bottom:0.5em;margin-bottom:1em}h2{font-size:2em;margin-top:1.5em;color:#9d7bb5}h3{font-size:1.5em;color:#8a6ba3}a{color:#b19cd9;text-decoration:none;transition:all 0.3s ease}a:hover{color:#d4b5f7;text-shadow:0 0 8px rgba(212,181,247,0.5)}code{background:#2a1a2a;color:#d4b5f7;padding:2px 6px;border-radius:3px;font-family:'Courier New',monospace}pre{background:#2a1a2a;border:1px solid #4a1a4a;border-radius:5px;padding:1em;overflow-x:auto}ul,ol{margin:1em 0;padding-left:2em}li{margin:0.5em 0;position:relative}li::marker{color:#b19cd9}.timeline{position:relative;padding:2em 0}.timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,transparent,#4a1a4a,transparent)}.release{background:rgba(42,26,42,0.6);border:1px solid #4a1a4a;border-radius:8px;padding:1.5em;margin:1em 0;box-shadow:0 4px 6px rgba(0,0,0,0.3);transition:all 0.3s ease}.release:hover{transform:translateY(-2px);box-shadow:0 6px 12px rgba(177,156,217,0.2);border-color:#b19cd9}.version{color:#d4b5f7;font-size:1.2em;font-weight:bold;text-shadow:0 0 5px rgba(212,181,247,0.3)}.date{color:#8a6ba3;font-style:italic;font-size:0.9em}@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}.fade-in{animation:fadeIn 0.5s ease-out}@keyframes glow{0%,100%{text-shadow:0 0 5px rgba(177,156,217,0.3)}50%{text-shadow:0 0 15px rgba(177,156,217,0.6)}}.glow{animation:glow 2s ease-in-out infinite}button{background:linear-gradient(135deg,#4a1a4a,#2a1a2a);color:#e0d0e0;border:1px solid #b19cd9;padding:0.75em 1.5em;border-radius:5px;cursor:pointer;font-family:'Crimson Text',serif;font-size:1em;transition:all 0.3s ease;box-shadow:0 2px 4px rgba(0,0,0,0.3)}button:hover{background:linear-gradient(135deg,#5a2a5a,#3a2a3a);border-color:#d4b5f7;box-shadow:0 4px 8px rgba(177,156,217,0.3);transform:translateY(-1px)}button:active{transform:translateY(0);box-shadow:0 2px 4px rgba(0,0,0,0.3)}"
+}

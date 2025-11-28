@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animation Engine Demo</title>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      background: #1a1a1a;
+      color: #fff;
+      padding: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: #8b0000;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .demo-section {
+      margin: 40px 0;
+      padding: 20px;
+      background: #2a2a2a;
+      border: 2px solid #8b0000;
+      border-radius: 8px;
+    }
+
+    .demo-section h2 {
+      color: #8b0000;
+      margin-top: 0;
+    }
+
+    button {
+      background: #8b0000;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      margin: 10px 10px 10px 0;
+      font-family: 'Courier New', monospace;
+    }
+
+    button:hover {
+      background: #a00000;
+    }
+
+    .test-element {
+      padding: 20px;
+      background: #333;
+      border-radius: 4px;
+      margin: 20px 0;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .timeline-item {
+      padding: 15px;
+      background: #333;
+      border-radius: 4px;
+      margin: 10px 0;
+    }
+
+    .export-target {
+      padding: 40px;
+      background: #333;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #8b0000;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎃 Animation Engine Demo</h1>
+
+  <div class="demo-section">
+    <h2>1. Reveal Animation</h2>
+    <p>Dramatic reveal effect for patch note generation</p>
+    <button onclick="testReveal()">Play Reveal Animation</button>
+    <div id="reveal-target" class="test-element">
+      Patch notes will appear here...
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>2. Cascade Animation</h2>
+    <p>Staggered entrance for timeline entries</p>
+    <button onclick="testCascade()">Play Cascade Animation</button>
+    <div id="cascade-container">
+      <div class="timeline-item">Release v1.0.0</div>
+      <div class="timeline-item">Release v1.1.0</div>
+      <div class="timeline-item">Release v1.2.0</div>
+      <div class="timeline-item">Release v2.0.0</div>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>3. Transform Animation</h2>
+    <p>Visual transformation from original to themed text</p>
+    <button onclick="testTransform()">Play Transform Animation</button>
+    <div id="transform-target" class="test-element">
+      Fixed memory leak in user authentication
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>4. Export Animation</h2>
+    <p>Dramatic export effect with particle effects</p>
+    <button onclick="testExport()">Play Export Animation</button>
+    <div id="export-target" class="export-target">
+      EXPORT COMPLETE
+    </div>
+  </div>
+
+  <script type="module">
+    import { AnimationEngine } from './animation-engine.js';
+
+    // Create animation engine instance
+    const engine = new AnimationEngine();
+    window.engine = engine;
+
+    // Test reveal animation
+    window.testReveal = async () => {
+      const element = document.getElementById('reveal-target');
+      element.textContent = '🎃 Spooky patch notes generated!';
+      await engine.playRevealAnimation(element);
+    };
+
+    // Test cascade animation
+    window.testCascade = async () => {
+      const container = document.getElementById('cascade-container');
+      const items = Array.from(container.children);
+      await engine.playCascadeAnimation(items);
+    };
+
+    // Test transform animation
+    window.testTransform = async () => {
+      const element = document.getElementById('transform-target');
+      await engine.playTransformAnimation(
+        'Fixed memory leak in user authentication',
+        'Banished the phantom that haunted our spectral guardians',
+        element
+      );
+    };
+
+    // Test export animation
+    window.testExport = async () => {
+      const element = document.getElementById('export-target');
+      await engine.playExportAnimation(element);
+    };
+
+    console.log('✅ Animation Engine loaded successfully!');
+    console.log('Active animations:', engine.getActiveAnimationCount());
+  </script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+/**
+ * Performance Optimizations CSS
+ * 
+ * CSS optimizations for smooth 60fps demo experience
+ * Task: 14. Optimize performance for smooth demo experience
+ */
+
+/* Use hardware acceleration for animated elements */
+.demo-animated,
+.animation-target,
+.particle,
+.theme-showcase,
+.statistics-display,
+.intro-screen {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Optimize font rendering */
+body,
+.demo-components {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Contain layout and paint for better performance */
+.demo-components,
+.theme-showcase,
+.statistics-display,
+.intro-screen {
+  contain: layout style paint;
+}
+
+/* Optimize animations */
+@media (prefers-reduced-motion: no-preference) {
+  .demo-animated {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Reduce motion for accessibility and performance */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Optimize particle rendering */
+.particle {
+  pointer-events: none;
+  contain: strict;
+  isolation: isolate;
+}
+
+/* Optimize scrolling performance */
+.timeline-section,
+.demo-components {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* GPU acceleration for transforms */
+.scale-animation,
+.fade-animation,
+.slide-animation {
+  transform: translate3d(0, 0, 0);
+}
+
+/* Optimize box-shadow rendering */
+.glow-effect {
+  filter: drop-shadow(0 0 20px rgba(138, 43, 226, 0.6));
+}
+
+/* Reduce paint areas */
+.demo-container {
+  isolation: isolate;
+}
+
+/* Optimize text rendering for large text */
+.presentation-mode {
+  text-rendering: optimizeSpeed;
+}
+
+/* Performance fallback styles */
+.performance-fallback .particle {
+  display: none;
+}
+
+.performance-fallback .glow-effect {
+  box-shadow: none;
+  filter: none;
+}
+
+.performance-fallback .demo-animated {
+  transition-duration: 0.2s !important;
+}
+
+/* Optimize for 60fps animations */
+@keyframes optimized-fade {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes optimized-slide {
+  from {
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Contain repaints to specific layers */
+.animation-layer {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+}
+
+/* Optimize for projector displays */
+@media (min-width: 1920px) {
+  .presentation-mode {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Reduce complexity for low-end devices */
+@media (max-width: 768px) {
+  .particle {
+    display: none;
+  }
+  
+  .glow-effect {
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
+  }
+}

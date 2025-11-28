@@ -1,0 +1,542 @@
+/**
+ * Horror-themed styling for Phantom Patch Notes
+ */
+
+/* ============================================================================
+   Base Styles & Reset
+   ============================================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Color Palette */
+  --color-void: #0a0a0a;
+  --color-shadow: #1a1a1a;
+  --color-mist: #2a2a2a;
+  --color-blood: #8b0000;
+  --color-blood-light: #a52a2a;
+  --color-spectral: #4a0e4e;
+  --color-spectral-light: #6a1b6e;
+  --color-ghost: #e0e0e0;
+  --color-phantom: #b0b0b0;
+  --color-warning: #ff6b6b;
+  
+  /* Fonts */
+  --font-title: 'Creepster', cursive;
+  --font-body: 'Georgia', serif;
+  --font-mono: 'Courier New', monospace;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-void);
+  color: var(--color-ghost);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ============================================================================
+   Header
+   ============================================================================ */
+
+.app-header {
+  background: linear-gradient(180deg, var(--color-shadow) 0%, var(--color-void) 100%);
+  padding: var(--spacing-lg) var(--spacing-md);
+  text-align: center;
+  border-bottom: 2px solid var(--color-blood);
+  box-shadow: 0 4px 20px rgba(139, 0, 0, 0.3);
+}
+
+.app-title {
+  font-family: var(--font-title);
+  font-size: 3rem;
+  color: var(--color-blood);
+  text-shadow: 0 0 10px rgba(139, 0, 0, 0.8),
+               0 0 20px rgba(139, 0, 0, 0.5);
+  margin-bottom: var(--spacing-sm);
+  animation: flicker 3s infinite alternate;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.9; }
+  75% { opacity: 0.95; }
+}
+
+.tagline {
+  font-size: 1.2rem;
+  color: var(--color-phantom);
+  font-style: italic;
+  letter-spacing: 2px;
+}
+
+/* ============================================================================
+   Main Layout
+   ============================================================================ */
+
+.app-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-lg) var(--spacing-md);
+}
+
+/* ============================================================================
+   Controls Section
+   ============================================================================ */
+
+.controls-section {
+  background: var(--color-shadow);
+  border: 1px solid var(--color-spectral);
+  border-radius: 8px;
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  box-shadow: 0 4px 15px rgba(74, 14, 78, 0.3);
+}
+
+.control-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.control-group label {
+  display: block;
+  color: var(--color-ghost);
+  font-weight: bold;
+  margin-bottom: var(--spacing-xs);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.control-group input[type="text"] {
+  width: 100%;
+  padding: var(--spacing-sm);
+  background: var(--color-void);
+  border: 2px solid var(--color-mist);
+  border-radius: 4px;
+  color: var(--color-ghost);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  transition: border-color var(--transition-fast);
+}
+
+.control-group input[type="text"]:focus {
+  outline: none;
+  border-color: var(--color-spectral-light);
+  box-shadow: 0 0 10px rgba(106, 27, 110, 0.5);
+}
+
+.toggle-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle-label input[type="checkbox"] {
+  margin-right: var(--spacing-sm);
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--color-blood);
+}
+
+.toggle-text {
+  font-size: 1rem;
+  color: var(--color-ghost);
+}
+
+/* ============================================================================
+   Buttons
+   ============================================================================ */
+
+.btn-primary,
+.btn-secondary {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border: none;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-blood) 0%, var(--color-blood-light) 100%);
+  color: var(--color-ghost);
+  box-shadow: 0 4px 15px rgba(139, 0, 0, 0.4);
+  width: 100%;
+  margin-top: var(--spacing-sm);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--color-blood-light) 0%, var(--color-blood) 100%);
+  box-shadow: 0 6px 20px rgba(139, 0, 0, 0.6);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: var(--color-spectral);
+  color: var(--color-ghost);
+  box-shadow: 0 2px 10px rgba(74, 14, 78, 0.4);
+}
+
+.btn-secondary:hover {
+  background: var(--color-spectral-light);
+  box-shadow: 0 4px 15px rgba(74, 14, 78, 0.6);
+}
+
+/* ============================================================================
+   Error Display
+   ============================================================================ */
+
+.error-message {
+  display: none;
+  background: rgba(139, 0, 0, 0.2);
+  border: 2px solid var(--color-blood);
+  border-radius: 4px;
+  padding: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+  color: var(--color-warning);
+  font-size: 0.95rem;
+  animation: fadeIn var(--transition-normal);
+}
+
+.error-message.visible {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================================
+   Timeline Section
+   ============================================================================ */
+
+.timeline-section {
+  background: var(--color-shadow);
+  border: 1px solid var(--color-spectral);
+  border-radius: 8px;
+  padding: var(--spacing-lg);
+  box-shadow: 0 4px 15px rgba(74, 14, 78, 0.3);
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 2px solid var(--color-mist);
+}
+
+.timeline-header h2 {
+  font-family: var(--font-title);
+  font-size: 2rem;
+  color: var(--color-blood);
+  text-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+}
+
+.export-controls {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.export-controls select {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--color-void);
+  border: 2px solid var(--color-mist);
+  border-radius: 4px;
+  color: var(--color-ghost);
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+
+.export-controls select:focus {
+  outline: none;
+  border-color: var(--color-spectral-light);
+}
+
+/* ============================================================================
+   Loading Indicator
+   ============================================================================ */
+
+.loading {
+  display: none;
+  text-align: center;
+  padding: var(--spacing-xl);
+}
+
+.loading.visible {
+  display: block;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid var(--color-mist);
+  border-top: 4px solid var(--color-blood);
+  border-radius: 50%;
+  margin: 0 auto var(--spacing-md);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading p {
+  color: var(--color-phantom);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+/* ============================================================================
+   Timeline Container
+   ============================================================================ */
+
+.timeline-container {
+  display: none;
+  margin-bottom: var(--spacing-lg);
+}
+
+.timeline-container.visible {
+  display: block;
+}
+
+.timeline-entry {
+  background: var(--color-void);
+  border: 2px solid var(--color-mist);
+  border-radius: 6px;
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline-entry::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: var(--color-blood);
+  transform: scaleY(0);
+  transition: transform var(--transition-normal);
+}
+
+.timeline-entry:hover {
+  border-color: var(--color-spectral-light);
+  transform: translateX(5px);
+  box-shadow: 0 4px 15px rgba(74, 14, 78, 0.4);
+}
+
+.timeline-entry:hover::before {
+  transform: scaleY(1);
+}
+
+.timeline-entry.selected {
+  border-color: var(--color-blood);
+  background: rgba(139, 0, 0, 0.1);
+}
+
+.timeline-entry.selected::before {
+  transform: scaleY(1);
+}
+
+.timeline-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: var(--spacing-xs);
+}
+
+.timeline-version {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--color-blood);
+  font-family: var(--font-mono);
+}
+
+.timeline-date {
+  font-size: 0.9rem;
+  color: var(--color-phantom);
+  font-style: italic;
+}
+
+.timeline-summary {
+  color: var(--color-ghost);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ============================================================================
+   Detail View
+   ============================================================================ */
+
+.detail-view {
+  display: none;
+  background: var(--color-void);
+  border: 2px solid var(--color-blood);
+  border-radius: 6px;
+  padding: var(--spacing-lg);
+  animation: slideIn var(--transition-slow);
+}
+
+.detail-view.visible {
+  display: block;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.detail-header {
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 2px solid var(--color-mist);
+}
+
+.detail-version {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--color-blood);
+  font-family: var(--font-mono);
+  margin-bottom: var(--spacing-xs);
+}
+
+.detail-date {
+  color: var(--color-phantom);
+  font-style: italic;
+}
+
+.detail-section {
+  margin-bottom: var(--spacing-lg);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  color: var(--color-spectral-light);
+  margin-bottom: var(--spacing-md);
+  font-family: var(--font-title);
+  text-shadow: 0 0 5px rgba(106, 27, 110, 0.5);
+}
+
+.section-entry {
+  background: var(--color-shadow);
+  border-left: 3px solid var(--color-spectral);
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  border-radius: 4px;
+}
+
+.entry-themed {
+  color: var(--color-ghost);
+  font-size: 1rem;
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.6;
+}
+
+.entry-original {
+  color: var(--color-phantom);
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  font-style: italic;
+  padding-left: var(--spacing-md);
+  border-left: 2px solid var(--color-mist);
+}
+
+.entry-hash {
+  color: var(--color-mist);
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  margin-top: var(--spacing-xs);
+}
+
+/* ============================================================================
+   Responsive Design
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .app-title {
+    font-size: 2rem;
+  }
+  
+  .tagline {
+    font-size: 1rem;
+  }
+  
+  .timeline-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+  
+  .export-controls {
+    width: 100%;
+  }
+  
+  .export-controls select,
+  .export-controls button {
+    flex: 1;
+  }
+  
+  .timeline-entry-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .detail-version {
+    font-size: 1.5rem;
+  }
+  
+  .section-title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-main {
+    padding: var(--spacing-md) var(--spacing-sm);
+  }
+  
+  .controls-section,
+  .timeline-section {
+    padding: var(--spacing-md);
+  }
+  
+  .app-title {
+    font-size: 1.5rem;
+  }
+}

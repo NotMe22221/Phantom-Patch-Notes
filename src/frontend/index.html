@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phantom Patch Notes</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="../demo/styles/demo.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Eater&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <header class="app-header">
+      <h1 class="app-title">Phantom Patch Notes</h1>
+      <p class="tagline">Haunted Changelogs from the Beyond</p>
+    </header>
+    
+    <main class="app-main">
+      <section class="controls-section">
+        <div class="control-group">
+          <label for="repo-path">Repository Path</label>
+          <input 
+            type="text" 
+            id="repo-path" 
+            placeholder="/path/to/your/repository"
+            aria-label="Repository path input"
+          />
+        </div>
+        
+        <div class="control-group">
+          <label class="toggle-label">
+            <input type="checkbox" id="preview-mode" aria-label="Preview mode toggle" />
+            <span class="toggle-text">Preview Mode</span>
+          </label>
+        </div>
+        
+        <button id="generate-btn" class="btn-primary" aria-label="Generate patch notes">
+          Summon Patch Notes
+        </button>
+        
+        <div id="error-display" class="error-message" role="alert" aria-live="polite"></div>
+      </section>
+      
+      <section class="timeline-section">
+        <div class="timeline-header">
+          <h2>Release Timeline</h2>
+          <div class="export-controls">
+            <select id="export-format" aria-label="Export format selection">
+              <option value="markdown">Markdown</option>
+              <option value="html">HTML</option>
+              <option value="json">JSON</option>
+            </select>
+            <button id="export-btn" class="btn-secondary" aria-label="Export patch notes">
+              Export
+            </button>
+          </div>
+        </div>
+        
+        <div id="loading-indicator" class="loading" aria-live="polite">
+          <div class="loading-spinner"></div>
+          <p>Summoning from the void...</p>
+        </div>
+        
+        <div id="timeline-container" class="timeline-container"></div>
+        
+        <div id="detail-view" class="detail-view"></div>
+      </section>
+    </main>
+  </div>
+  
+  <script type="module" src="./main.ts"></script>
+</body>
+</html>
